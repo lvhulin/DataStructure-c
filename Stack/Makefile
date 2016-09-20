@@ -14,4 +14,4 @@ stack.o:stack.h
 .PHONY:clean
 
 clean:
-	-rm -rf $(main) 
+	-rm -rf $(obj) main 
