@@ -11,8 +11,9 @@ struct _tag_stack_node
 
 Stack *stack_create();
 int stack_push(Stack *stack, StackNode *node);
-StackNode *stack_pop(Stack *stack);
 int stack_length(Stack *stack);
-
+StackNode *stack_pop(Stack *stack);
+StackNode *stack_top(Stack *stack);
+void stack_destroy(Stack **stack);
 
 #endif

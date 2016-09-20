@@ -26,16 +26,30 @@ int main(void)
 	stack_push(stack, (StackNode *)&v4);
 	stack_push(stack, (StackNode *)&v5);
 	
-	
 	stack_pop(stack);
 	
-	while (stack_length(stack)) {
+	
+	struct Value *ptr = (struct Value *)stack_top(stack);
+	printf("stack top = %d\n", ptr->v);
+	
+	stack_length(stack);
+
+
+	printf("====================================\n");
+		
+	
+	printf("stack length = %d\n", stack_length(stack));
+	
+	
+	stack_destroy(&stack);
+
+	while (stack_length(stack) > 0) {
 		
 		struct Value *pv = (struct Value *)stack_pop(stack);
 		
 		printf("value = %d\n", pv->v);
 	}
-	
+
 	
 	return 0;
 } 

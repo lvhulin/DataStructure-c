@@ -29,7 +29,8 @@ int stack_push(Stack *stack, StackNode *node)
 	int ret = (s != NULL) && (node != NULL);
 	
 	if (ret) {
-		StackNode *newNode = (StackNode *)node;
+		StackNode *newNode = (StackNode *)s;
+		newNode = (StackNode *)node;
 		if (s->top == NULL) {
 			newNode->next = NULL;
 		} else {
@@ -48,15 +49,24 @@ StackNode *stack_pop(Stack *stack)
 	StackNode *ret = NULL;
 	
 	if ((s != NULL) && (s->top != NULL)) {
-		StackNode *current = s->top;
-		ret = current;
-		free(current);
+		ret = s->top;
 		s->top = s->top->next;
 		--s->length;
 	}	
 	return ret;	
 }
 
+
+StackNode *stack_top(Stack *stack)
+{
+	TStack *s = (TStack *)stack;
+	StackNode *ret = NULL;
+	
+	if ((s != NULL) && (s->top != NULL)) {
+		ret = s->top;
+	}	
+	return ret;	
+}
 
 int stack_length(Stack *stack)
 {
@@ -68,4 +78,10 @@ int stack_length(Stack *stack)
 	}
 	
 	return ret;	
+}
+
+void stack_destroy(Stack **stack)
+{
+	free(*stack);
+	*stack = NULL;
 }
