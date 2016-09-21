@@ -12,7 +12,7 @@ typedef struct _tag_queue
 
 Queue *queue_create()
 {
-	TQueue *ret = (QueueNode *)malloc(sizeof(QueueNode));
+	TQueue *ret = (TQueue *)malloc(sizeof(TQueue));
 	
 	if (ret != NULL) {
 		ret->head = NULL;
